@@ -27,14 +27,18 @@ class ExampleTest extends TestCase
             'is_active' => true,
         ]);
         Setting::create(['key' => 'site_title', 'value' => 'Tahu Reverse']);
-        Setting::create(['key' => 'whatsapp_number', 'value' => '']);
-        Setting::create(['key' => 'instagram_url', 'value' => '']);
+        Setting::create(['key' => 'whatsapp_number', 'value' => '6289517447079']);
+        Setting::create(['key' => 'instagram_url', 'value' => 'https://www.instagram.com/tahu.reverse?dlrf=bGdxbXQzcDhmYW9q']);
+        Setting::create(['key' => 'contact_email', 'value' => 'tahureverse@gmail.com']);
 
         $response = $this->get('/');
 
         $response
             ->assertOk()
             ->assertSee('Tahu Reverse')
+            ->assertSee('6289517447079')
+            ->assertSee('https://www.instagram.com/tahu.reverse?dlrf=bGdxbXQzcDhmYW9q', false)
+            ->assertSee('tahureverse@gmail.com')
             ->assertSee('Created by XL PPLG 3 — Kelompok Tahu Reverse');
     }
 }

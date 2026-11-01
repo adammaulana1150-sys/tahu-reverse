@@ -21,6 +21,7 @@ class SettingController extends Controller
         'site_title',
         'whatsapp_number',
         'instagram_url',
+        'contact_email',
         'qris_image_path',
     ];
 

@@ -67,8 +67,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         foreach ([
-            'whatsapp_number' => '',
-            'instagram_url' => '',
+            'whatsapp_number' => '6289517447079',
+            'instagram_url' => 'https://www.instagram.com/tahu.reverse?dlrf=bGdxbXQzcDhmYW9q',
+            'contact_email' => 'tahureverse@gmail.com',
             'site_title' => 'Tahu Reverse',
         ] as $key => $value) {
             Setting::firstOrCreate(['key' => $key], ['value' => $value]);

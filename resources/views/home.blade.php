@@ -5,18 +5,6 @@
     $siteTitle     = $settings['site_title'] ?? 'Tahu Reverse';
     $priceFmt      = number_format($product->price, 0, ',', '.');
     $canBuy        = $product->is_active && $availableStock >= 1;
-
-    // Contact details are driven exclusively from the site settings table.
-    // Never hardcode personal phone numbers, email addresses, or social
-    // handles in the public view.
-    $whatsappNumber = $settings['whatsapp_number'] ?? null;
-    $whatsappUrl    = null;
-    if ($whatsappNumber && preg_match('/^[1-9][0-9]{7,14}$/', $whatsappNumber)) {
-        $whatsappUrl = 'https://wa.me/'.$whatsappNumber.'?text='.rawurlencode('Halo, saya tertarik untuk memesan '.$product->name.');
-    }
-    $instagramUrl = filter_var($settings['instagram_url'] ?? null, FILTER_VALIDATE_URL)
-        ? $settings['instagram_url']
-        : null;
 @endphp
 
 <a class="skip" href="#produk">Lewati ke produk</a>

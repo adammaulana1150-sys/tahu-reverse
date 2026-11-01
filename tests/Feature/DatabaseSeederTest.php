@@ -26,7 +26,9 @@ class DatabaseSeederTest extends TestCase
         $this->assertTrue(User::first()->is_admin);
         $this->assertTrue(Hash::check('a-strong-test-password', User::first()->password));
         $this->assertSame(1, Product::count());
-        $this->assertSame(3, Setting::count());
+        $this->assertSame(4, Setting::count());
+        $this->assertSame('6289517447079', Setting::query()->whereKey('whatsapp_number')->value('value'));
+        $this->assertSame('tahureverse@gmail.com', Setting::query()->whereKey('contact_email')->value('value'));
 
         Product::first()->update(['price' => 25000]);
         $this->seed();

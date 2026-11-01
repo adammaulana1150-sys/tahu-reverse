@@ -23,6 +23,11 @@
         <input class="mt-1 w-full rounded-lg border-stone-300" id="instagram_url" name="instagram_url" type="url" value="{{ old('instagram_url', $settings['instagram_url'] ?? '') }}" placeholder="https://instagram.com/akun">
         @error('instagram_url')<p class="mt-1 text-sm text-red-700">{{ $message }}</p>@enderror
     </div>
+    <div>
+        <label class="block text-sm font-medium" for="contact_email">Email kontak</label>
+        <input class="mt-1 w-full rounded-lg border-stone-300" id="contact_email" name="contact_email" type="email" value="{{ old('contact_email', $settings['contact_email'] ?? '') }}" placeholder="email@example.com">
+        @error('contact_email')<p class="mt-1 text-sm text-red-700">{{ $message }}</p>@enderror
+    </div>
     <div class="border-t border-stone-200 pt-5">
         <h2 class="font-semibold">QRIS resmi</h2>
         <p class="mt-1 text-sm text-stone-600">Unggah gambar QRIS merchant resmi saja. Jangan unggah QR percobaan atau QR milik pihak lain.</p>

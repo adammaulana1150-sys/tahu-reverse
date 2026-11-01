@@ -30,7 +30,10 @@ class LandingPageController extends Controller
             'productImage' => $productImage,
             'settings' => $settings,
             'whatsappUrl' => $whatsappUrl,
+            'whatsappText' => $settings['whatsapp_number'] ?? 'Belum diatur',
             'instagramUrl' => $instagramUrl,
+            'instagramText' => $instagramUrl ?? 'Belum diatur',
+            'contactEmail' => $settings['contact_email'] ?? config('mail.from.address'),
             'availableStock' => max(0, $product->stock - $reservedStock),
         ]);
     }
