@@ -189,6 +189,12 @@ nav a:hover{background:var(--sun)}
 
 /* ============ Static QRIS payment page ============ */
 .payment-page{min-height:75vh;padding-block:clamp(3rem,8vw,7rem)}
+.payment-ready-card{max-width:680px;margin:0 auto;padding:clamp(1.5rem,5vw,3rem);border:2px solid var(--ink);border-radius:1.4rem;background:var(--card);text-align:center}
+.payment-ready-card .payment-title{margin:.7rem 0 1rem}
+.payment-ready-card>p{max-width:48ch;margin:0 auto}
+.payment-ready-action{margin-top:1.5rem}
+.payment-ready-summary{margin:2rem auto 0;padding-top:1rem;border-top:1px solid var(--line);text-align:left}
+.payment-ready-summary p{margin:.4rem 0}
 .payment-title{font-size:clamp(2.4rem,7vw,5rem);margin:.7rem 0 1.5rem}
 .payment-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem}
 .payment-panel{padding:clamp(1.2rem,3vw,2rem);border:2px solid var(--ink);border-radius:1.4rem;background:var(--card)}

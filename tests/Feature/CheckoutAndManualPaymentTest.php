@@ -33,6 +33,7 @@ class CheckoutAndManualPaymentTest extends TestCase
         $response->assertOk()->assertJsonMissingPath('snap_token');
         $token = basename(parse_url($response->json('payment_url'), PHP_URL_PATH));
         $this->assertSame(64, strlen($token));
+        $response->assertJsonPath('ready_url', route('payments.ready', $token));
 
         $order = Order::query()->firstOrFail();
         $payment = Payment::query()->where('order_id', $order->id)->firstOrFail();
@@ -52,6 +53,33 @@ class CheckoutAndManualPaymentTest extends TestCase
             'phone' => '6281234567890',
         ]);
         $this->assertSame($product->id, $order->product_id);
+    }
+
+    public function test_checkout_ready_page_offers_one_tap_to_the_qris_page(): void
+    {
+        Storage::fake('public');
+        Storage::disk('public')->put('qris/official.png', 'image-content');
+        Setting::create(['key' => 'qris_image_path', 'value' => 'qris/official.png']);
+        [$order, , $token] = $this->createOrderAndPayment();
+
+        $this->get(route('payments.ready', $token))
+            ->assertOk()
+            ->assertSee('QRIS siap. Satu ketukan lagi.')
+            ->assertSee(route('payments.show', $token), false)
+            ->assertSee('Tampilkan QRIS')
+            ->assertSee($order->order_code)
+            ->assertSee('Rp 10.000');
+    }
+
+    public function test_checkout_ready_page_does_not_claim_qris_is_ready_without_an_official_image(): void
+    {
+        [, , $token] = $this->createOrderAndPayment();
+
+        $this->get(route('payments.ready', $token))
+            ->assertOk()
+            ->assertDontSee('QRIS siap. Satu ketukan lagi.')
+            ->assertSee('QRIS merchant resmi belum tersedia saat ini.')
+            ->assertSee('Lihat status pembayaran');
     }
 
     public function test_pending_qris_orders_reserve_stock_and_order_reference_is_unique(): void

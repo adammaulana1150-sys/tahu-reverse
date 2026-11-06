@@ -15,6 +15,9 @@ Route::get('/', [LandingPageController::class, 'index'])->name('home');
 Route::post('/checkout', [CheckoutController::class, 'store'])
     ->middleware('throttle:10,1')
     ->name('checkout.store');
+Route::get('/payment/{token}/ready', [PaymentController::class, 'ready'])
+    ->where('token', '[A-Za-z0-9]{64}')
+    ->name('payments.ready');
 Route::get('/payment/{token}', [PaymentController::class, 'show'])
     ->where('token', '[A-Za-z0-9]{64}')
     ->name('payments.show');

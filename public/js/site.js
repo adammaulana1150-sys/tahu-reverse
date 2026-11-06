@@ -80,12 +80,12 @@
                 return;
             }
 
-            if (!payload.payment_url) {
+            if (!payload.ready_url) {
                 error.textContent = 'Halaman pembayaran tidak dapat dibuat. Silakan coba lagi atau hubungi admin.';
                 return;
             }
 
-            window.location.assign(payload.payment_url);
+            window.location.assign(payload.ready_url);
         } catch {
             error.textContent = 'Tidak dapat terhubung ke server. Silakan coba lagi.';
         } finally {

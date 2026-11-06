@@ -91,6 +91,7 @@ class CheckoutController extends Controller
             ]);
 
             return [
+                'ready_url' => route('payments.ready', ['token' => $token]),
                 'payment_url' => route('payments.show', ['token' => $token]),
             ];
         });
