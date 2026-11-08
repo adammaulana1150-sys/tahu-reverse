@@ -9,7 +9,7 @@
 
 <a class="skip" href="#produk">Lewati ke produk</a>
 
-<div class="promo" role="note">Flip the Ordinary<span>✦</span>QRIS, diverifikasi manual<span>✦</span>{{ $canBuy ? 'Stok tersedia: ' . $availableStock . ' porsi' : 'Stok sedang habis' }}</div>
+<div class="promo" role="note">Flip the Ordinary<span>✦</span>{{ $canBuy ? 'Stok tersedia: ' . $availableStock . ' porsi' : 'Stok sedang habis' }}</div>
 
 <header class="nav" id="site-nav"><div class="wrap">
     <a class="logo" href="#top" aria-label="{{ $product->name }}, ke atas"><i aria-hidden="true">↻</i><span>{{ strtoupper($siteTitle) }}</span></a>
@@ -41,11 +41,10 @@
                 <h1 id="hero-title"><span class="ln" style="--i:0">Yang biasa,</span><span class="ln" style="--i:1">kami <span class="flip">balik.</span></span></h1>
                 <p class="lead">Terinspirasi dari tahu walik: tahu dibalik, lalu bagian yang terbuka diisi adonan tepung berbumbu. Makanan yang akrab, sudut pandang yang baru.</p>
                 <div class="cta-row">
-                    <button class="btn primary lg" type="button" data-open-checkout @disabled(!$canBuy)>Beli Sekarang · Rp {{ $priceFmt }}</button>
+                    <a class="btn primary lg" href="{{ $whatsappUrl }}" target="_blank" rel="noopener noreferrer">Pesan via WhatsApp</a>
                     <a class="btn lg" href="#kenali">Kenali Produknya</a>
                 </div>
                 <ul class="trust">
-                    <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4Zm-1.2 15.2-3.5-3.5 1.4-1.4 2.1 2.1 4.6-4.6 1.4 1.4-6 6Z"/></svg>QRIS dengan verifikasi manual</li>
                     <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8L12 2Z"/></svg>Rasa lokal, perspektif baru</li>
                 </ul>
             </div>
@@ -121,13 +120,12 @@
             <div class="price"><b>Rp {{ $priceFmt }}</b><span>1 porsi</span></div>
             <p class="note {{ $canBuy ? '' : 'off' }}">{{ $canBuy ? 'Stok tersedia: ' . $availableStock : 'Stok sedang habis' }}</p>
             <div class="cta-row">
-                <button class="btn primary lg" type="button" data-open-checkout @disabled(!$canBuy)>Beli Sekarang</button>
-                <a class="btn lg cream" href="{{ $whatsappUrl }}" target="_blank" rel="noopener noreferrer">Tanya via WhatsApp</a>
+                <a class="btn primary lg" href="{{ $whatsappUrl }}" target="_blank" rel="noopener noreferrer">Pesan via WhatsApp</a>
             </div>
             <ul class="chips" aria-label="Ciri khas">
                 <li>Tahu dibalik</li><li>Isi adonan tepung berbumbu</li><li>Rasa lokal</li>
             </ul>
-            <p class="secure"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4Z"/></svg>Pembayaran QRIS diverifikasi manual oleh admin.</p>
+
         </div>
     </div></section>
 
@@ -154,15 +152,13 @@
     {{-- ================= PESAN ================= --}}
     <section id="pesan" class="order"><div class="wrap">
         <h2>Siap buat<br>balik selera?</h2>
-        <p class="sub">Pesan langsung lewat WhatsApp atau checkout online dengan pembayaran aman.</p>
+        <p class="sub">Pesan langsung melalui WhatsApp, Instagram, atau email.</p>
         <div class="cta-row">
-            <a class="btn cream lg" href="{{ $whatsappUrl }}" target="_blank" rel="noopener noreferrer">Pesan lewat WhatsApp</a>
-            <button class="btn dark lg" type="button" data-open-checkout @disabled(!$canBuy)>Pesan Online</button>
+            <a class="btn primary lg" href="{{ $whatsappUrl }}" target="_blank" rel="noopener noreferrer">Pesan lewat WhatsApp</a>
         </div>
         <ol class="flow" aria-label="Alur pemesanan">
-            <li><b>1</b>Isi data &amp; alamat</li>
-            <li><b>2</b>Bayar via QRIS</li>
-            <li><b>3</b>Pesanan diproses</li>
+            <li><b>1</b>Kontak kami</li>
+            <li><b>2</b>Konfirmasi stok &amp; pesan</li>
         </ol>
     </div></section>
 
@@ -178,11 +174,15 @@
                 <span><small>WhatsApp</small><strong>{{ $whatsappText }}</strong></span>
                 <svg class="go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a></li>
-            <li><a class="ig" href="{{ $instagramUrl }}" target="_blank" rel="noopener noreferrer" aria-label="Kunjungi Instagram Tahu Reverse">
-                <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm5.2-3.2a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2Z"/></svg></span>
-                <span><small>Instagram</small><strong>{{ $instagramText }}</strong></span>
-                <svg class="go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a></li>
+            @if($instagramUrl)
+            <li>
+                <button class="ig" type="button" onclick="window.open('{{ $instagramUrl }}', '_blank', 'noopener noreferrer')" aria-label="Kunjungi Instagram resmi Tahu Reverse">
+                    <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm5.2-3.2a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2Z"/></svg></span>
+                    <span><small>Instagram</small><strong>Kunjungi Instagram resmi Tahu Reverse</strong></span>
+                    <svg class="go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+            </li>
+            @endif
             <li><a class="ml" href="mailto:{{ $contactEmail }}" aria-label="Kirim email ke Tahu Reverse">
                 <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm0 2v.5l8 5 8-5V6H4Zm16 12V8.85l-7.47 4.67a1 1 0 0 1-1.06 0L4 8.85V18h16Z"/></svg></span>
                 <span><small>Email</small><strong>{{ $contactEmail }}</strong></span>
@@ -200,7 +200,9 @@
         </div>
         <ul>
             <li><a href="{{ $whatsappUrl }}" target="_blank" rel="noopener noreferrer">WhatsApp: {{ $whatsappText }}</a></li>
-            <li><a href="{{ $instagramUrl }}" target="_blank" rel="noopener noreferrer">Instagram: {{ $instagramText }}</a></li>
+            @if($instagramUrl)
+                <li><button class="ig" type="button" onclick="window.open('{{ $instagramUrl }}', '_blank', 'noopener noreferrer')">Instagram resmi Tahu Reverse</button></li>
+            @endif
             <li><a href="mailto:{{ $contactEmail }}">Email: {{ $contactEmail }}</a></li>
             <li><a href="#contact">Contact Us</a></li>
         </ul>
@@ -209,48 +211,10 @@
     <p class="credit">© {{ now()->year }} {{ $siteTitle }}.<br>Created by XL PPLG 3 — Kelompok Tahu Reverse<br>SMK Amaliah</p>
 </div></footer>
 
-{{-- Tombol beli cepat (mobile) --}}
-<div class="buybar" data-buybar>
-    <div><b>{{ $product->name }}</b><span>Rp {{ $priceFmt }} / porsi</span></div>
-    <button class="btn sun" type="button" data-open-checkout @disabled(!$canBuy)>Beli</button>
-</div>
-
-<dialog id="checkout-dialog" aria-labelledby="checkout-title">
-    <div class="dlg" style="position:relative">
-        <button class="x" type="button" data-close-checkout aria-label="Tutup">×</button>
-        <span class="demo">Pembayaran QRIS</span>
-        <h2 id="checkout-title">Checkout</h2>
-        <form id="checkout-form" action="{{ route('checkout.store') }}" method="post">
-            @csrf
-            <div class="row">
-                <div><b>{{ $product->name }}</b><br><small>Rp {{ $priceFmt }} / porsi</small></div>
-                <div class="qty"><button type="button" id="quantity-minus" aria-label="Kurangi jumlah">−</button><output id="quantity-output" aria-live="polite">1</output><button type="button" id="quantity-plus" aria-label="Tambah jumlah">+</button></div>
-            </div>
-            <input type="hidden" id="quantity" name="quantity" value="1">
-            <div class="row total"><span>Total</span><b id="checkout-total"></b></div>
-            <label class="checkout-field">Nama<input name="name" autocomplete="name" required maxlength="120"></label>
-            <label class="checkout-field">Nomor WhatsApp / Telepon<input name="phone" type="tel" autocomplete="tel" inputmode="tel" required maxlength="20" placeholder="08xxxxxxxxxx"></label>
-            <label class="checkout-field">Alamat pengiriman<textarea name="address" autocomplete="street-address" required maxlength="1000" rows="3"></textarea></label>
-            <label class="checkout-field">Catatan (opsional)<textarea name="note" maxlength="1000" rows="2"></textarea></label>
-            <p class="err" id="checkout-error" role="alert" aria-live="polite"></p>
-            <button class="btn primary" id="checkout-submit" type="submit" style="width:100%;justify-content:center">Pay Now</button>
-        </form>
-    </div>
-</dialog>
 <div id="toast" role="status" aria-live="polite"></div>
 @endsection
 
 @push('scripts')
-@php
-    $checkoutConfig = [
-        'price' => $product->price,
-        'stock' => $availableStock,
-        'csrfToken' => csrf_token(),
-    ];
-@endphp
-<script>
-    window.checkoutConfig = @json($checkoutConfig);
-</script>
 <script>
 (function () {
     var root = document.documentElement;
@@ -345,5 +309,4 @@
     }
 })();
 </script>
-<script src="{{ asset('js/site.js') }}" defer></script>
 @endpush

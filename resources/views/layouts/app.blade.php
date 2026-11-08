@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>{{ $settings['site_title'] ?? 'Tahu Reverse' }} — Yang Biasa, Kami Balik</title>
-    <meta name="description" content="Olahan tahu terinspirasi tahu walik. Pesan langsung lewat WhatsApp atau checkout online.">
+    <meta name="description" content="Olahan tahu terinspirasi tahu walik. Hubungi kami melalui WhatsApp, Instagram, atau email.">
     <link rel="icon" type="image/jpeg" href="{{ asset('images/tahu%20reverse%20logo.jpeg') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
